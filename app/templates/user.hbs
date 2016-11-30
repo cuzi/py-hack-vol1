@@ -4,8 +4,8 @@
     {{#card.title as |title|}}
       {{#title.text as |text|}}
         {{#text.headline}} {{model.userName}} {{/text.headline}}
-        {{#text.subhead}}model.station{{/text.subhead}}
-        {{#text.subhead}}model.channel{{/text.subhead}}
+        {{#text.subhead}}{{model.station}}{{/text.subhead}}
+        {{#text.subhead}}{{model.channel}}{{/text.subhead}}
       {{/title.text}}
       {{title.media size="lg" src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png" alt="Tomster" title="Tomster"}}
     {{/card.title}}
@@ -18,7 +18,7 @@
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
       {{#title.text as |text|}}
-        {{#text.headline}} Request for Help {{/text.headline}}
+        {{#text.headline}}Request for Help {{/text.headline}}
         {{#text.subhead}}model.station{{/text.subhead}}
         {{#text.subhead}}model.channel{{/text.subhead}}
       {{/title.text}}
