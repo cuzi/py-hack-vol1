@@ -42,7 +42,16 @@ export default Ember.Controller.extend({
         this.transitionToRoute('admin', {userName: this.get('userName') } );
       }
       else if  (this.get('isUser')) {
-        this.transitionToRoute('user' , {userName: this.get('userName') } );
+       this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
+         let user =  users.findBy('userName', this.get('userName'));
+         user.setProperties( {
+            station: this.get('station'),
+            channel: this.get('channel')
+          }
+         );
+         user.save();
+        this.transitionToRoute('user', {userName: this.get('userName') });
+       });
       }
 
     }

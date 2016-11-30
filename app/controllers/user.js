@@ -4,16 +4,20 @@ export default Ember.Controller.extend({
 
   callStatus: [
     {
-      name: 'Just started'
+      name: 'Just started',
+      value:1
     },
     {
-      name: 'A faw minutes ago'
+      name: 'A faw minutes ago',
+      value:2
     },
     {
-      name: 'Over 10 minutes'
+      name: 'Over 10 minutes',
+      value:3
     },
     {
-      name: 'Over 20 minutes'
+      name: 'Over 20 minutes',
+      value:4
     },
   ],
   showStatusSelect:  Ember.computed('model.channel', function() {
@@ -46,7 +50,8 @@ export default Ember.Controller.extend({
       status:this.get('callStatus.value'),
       c_id:this.get('Cid'),
       incident:this.get('incident'),
-      start_time: new Date().getTime(),
+      start_time: new Date(),
+      user: this.get('model')
       });
       request.save();
     }
