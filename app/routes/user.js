@@ -1,14 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-   user: Ember.inject.service(),
-   model: function(params) {
-        console.log(params.userName);
-    }
-  /*() {
-       let user =  this.get('user').getUser();
-       return user;
-   }*/
-    
-   
+  user: {
+    userName: ''
+  },
+  model: function(params) {
+
+       return this.store.query('user', {'userName':  params.userName}).then(function(users) {
+         return users.findBy('userName', params.userName);
+       });
+   }
+
+
+
 });

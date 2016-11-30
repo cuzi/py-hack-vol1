@@ -41,18 +41,16 @@ body {
     position: relative;
     margin: 110px auto;
     img{
-      border-radius: 50%;
-      -moz-border-radius: 50%;
-      -webkit-border-radius: 50%;
       height: 200px;
       width: 200px;
       display: block;
-      margin: 0 auto;
+      margin: 0px 50%;
       top: -109px;
-      margin-left: -43%;
-      transform: translate(-43%);
-      float: left !important;
-      position:absolute;
+      /* margin-left: -43%; */
+      transform: translateX(-50%);
+      /* float: left !important; */
+      position: absolute;
+          border-radius: 50%;
     }
     .ChenealValues{
       margin:0 auto;

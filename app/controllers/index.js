@@ -8,8 +8,8 @@ export default Ember.Controller.extend({
           this.store.query('user',{ filter: { userName: '*' }}).then(function(user) {
             _this.set('isUser', !!user.findBy('userName', uname));
           });
-  
-  }),  
+
+  }),
   userImage: Ember.computed('isUser', function() {
       if (! this.get('isUser')) {
         return 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png'
@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
       this.updateUserDetail('isAdmin', this);
       this.updateUserDetail('name', this);
     }
-  
+
   }),  
 
   updateUserDetail: (attr, sender) => {

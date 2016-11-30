@@ -9,7 +9,7 @@ export default DS.Model.extend({
     channel:     DS.attr('number'),
     status:      DS.attr('string'),
     req_time:    DS.attr('date'),
-    start_time:  DS.attr('date'),
-    end_time:    DS.attr('date'),
-    user:        DS.belongsTo('user')
+    user:        DS.attr('string'),
+    tier:        DS.attr('string'),
+    incident:    DS.attr('string'),
 });
