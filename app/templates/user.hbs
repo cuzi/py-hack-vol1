@@ -1,2 +1,32 @@
 {{outlet}}
-user
+<div class="layout-column flex-xs flex-gt-xs-100">
+  {{#paper-card as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}} {{model.userName}} {{/text.headline}}
+        {{#text.subhead}}model.station{{/text.subhead}}
+        {{#text.subhead}}model.channel{{/text.subhead}}
+      {{/title.text}}
+      {{title.media size="lg" src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png" alt="Tomster" title="Tomster"}}
+    {{/card.title}}
+    {{#card.actions}}
+      {{#paper-button}}Edit{{/paper-button}}
+    {{/card.actions}}
+  {{/paper-card}}
+</div>
+<div class="layout-column flex-xs flex-gt-xs-100">
+  {{#paper-card as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}} Request for Help {{/text.headline}}
+        {{#text.subhead}}model.station{{/text.subhead}}
+        {{#text.subhead}}model.channel{{/text.subhead}}
+      {{/title.text}}
+      {{title.media size="lg" src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png" alt="Tomster" title="Tomster"}}
+    {{/card.title}}
+    {{#card.actions}}
+      {{#paper-button}}Ask For Help{{/paper-button}}
+    {{/card.actions}}
+  {{/paper-card}}
+
+</div>
