@@ -1,1 +1,3 @@
-{{yield}}
+{{#each requests.request as |req|}}
+    {{que-row request=req}}
+{{/each}}
