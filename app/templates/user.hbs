@@ -3,15 +3,14 @@
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
       {{#title.text as |text|}}
-        {{#text.headline}} {{model.userName}} {{/text.headline}}
-        {{#text.subhead}}{{model.station}}{{/text.subhead}}
-        {{#text.subhead}}{{model.channel}}{{/text.subhead}}
+        {{#text.headline}} {{userName}} {{/text.headline}}
+        {{#text.subhead}}model.station{{/text.subhead}}
+        {{#text.subhead}}model.channel{{/text.subhead}}
       {{/title.text}}
       {{title.media size="lg" src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png" alt="Tomster" title="Tomster"}}
     {{/card.title}}
     {{#card.actions}}
-      {{#paper-button  onClick=(action "openModal") }}Edit{{/paper-button}}
-      {{#paper-button  onClick=(action "logOut") }}Log Out{{/paper-button}}
+      {{#paper-button}}Edit{{/paper-button}}
     {{/card.actions}}
   {{/paper-card}}
 </div>
@@ -20,7 +19,7 @@
     {{#card.title as |title|}}
       {{#title.text as |text|}}
         {{#text.headline}} Request for Help {{/text.headline}}
-        {{#paper-form onSubmit=(action "SubmitCall") as |form|}}
+        {{#paper-form onSubmit=(action "callForHelp") as |form|}}
   <div class="layout-row">
     <div class="layout-column flex-100">
       {{form.input label="topic" value=firstName onChange=(action (mut firstName)) required=true}}
@@ -41,15 +40,13 @@
       }}
     </div>
   </div>
-  {{#if showStatusSelect}}
     <div class="layout-row">
         <div class="layout-column flex-100">
-          {{#paper-select options=callStatus label="Call Status" required=true selected=pizzaSize onChange=(action (mut pizzaSize)) as |size|}}
-            {{size.name}}
+          {{#paper-select options=sizes label="Call Status" required=true selected=pizzaSize onChange=(action (mut pizzaSize)) as |size|}}
+            {{size}}
           {{/paper-select}}
         </div>
   </div>
-  {{/if}}
   <div class="layout-row">
     <div class="layout-column flex-100">
       {{form.input label="CustomerID" value=Cid onChange=(action (mut Cid)) required=false}}
@@ -72,30 +69,22 @@
       {{/title.text}}
     {{/card.title}}
   {{/paper-card}}
-  {{#if modalShown}}
+  {{#if showPromptDialog}}
   {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
 
     {{#paper-dialog-content}}
-    <div class="centeredForm">
-      <h2 class="md-title">Edit your Details </h2>
-      {{#paper-form onSubmit=(action "edit") as |form|}}
-                {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut model.station)) iconRight="person_pin_circle"}}
-            {{#paper-radio-group
-            groupValue=(readonly model.channel) class="ChenealValues"
-            onChange=(action (mut model.channel)) as |group|}}
-              {{#group.radio value="1" primary=true class="radioCenter"}} Chat {{/group.radio}}
-              {{#group.radio value="2" warn=true class="radioCenter"}} Social Network {{/group.radio}}
-              {{#group.radio value="3" class="radioCenter"}} Email {{/group.radio}}
-              {{#group.radio class='lastinput radioCenter' value="4" success=true }} Phone {{/group.radio}}
-            {{/paper-radio-group}}
-          {{/paper-form}}
+      <h2 class="md-title">What would you name your dog?</h2>
+      <p>Bowser is a common name.</p>
+      {{paper-input placeholder="dog name" autofocus=true value=dogName onChange=(action (mut dogName))}}
+      <div>
+        {{#paper-checkbox value=fullscreen onChange=(action (mut fullscreen))}}Display fullscreen at small window size breakpoints{{/paper-checkbox}}
       </div>
     {{/paper-dialog-content}}
 
     {{#paper-dialog-actions class="layout-row"}}
       <span class="flex"></span>
-      {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}MY BAD{{/paper-button}}
-      {{#paper-button primary=true onClick=(action "closePromptDialog" "ok" dogName)}}DONE{{/paper-button}}
+      {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}I'm a cat person{{/paper-button}}
+      {{#paper-button primary=true onClick=(action "closePromptDialog" "ok" dogName)}}Okay!{{/paper-button}}
     {{/paper-dialog-actions}}
 
   {{/paper-dialog}}

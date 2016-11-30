@@ -6,7 +6,7 @@ export default DS.Model.extend({
     userName: DS.attr('string'),
     name: DS.attr('string'),
     station: DS.attr('number'),
-    isAdmin: DS.attr('bool'),
+    isAdmin: DS.attr('boolean'),
     channel: DS.attr('string'),
     requets: DS.hasMany('request', { async: false })
 });
