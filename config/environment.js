@@ -11,17 +11,16 @@ module.exports = function(environment) {
       apiKey: "AIzaSyAmfUVzLkREXl_E7OnFHVP0EegidyxU1_4",
       authDomain: "py-hack.firebaseapp.com",
       databaseURL: "https://py-hack.firebaseio.com",
-      storageBucket: "py-hack.appspot.com",
-      messagingSenderId: "256841013568"
+      storageBucket: "py-hack.appspot.com"
     },
 
 
     // if using ember-cli-content-security-policy
-    contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-eval' apis.google.com",
-      'frame-src': "'self' https://*.firebaseapp.com",
-      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
-    },
+   // contentSecurityPolicy: {
+ //     'script-src': "'self' 'unsafe-eval' apis.google.com",
+  //    'frame-src': "'self' https://*.firebaseapp.com",
+  //    'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+  //  },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -31,7 +30,7 @@ module.exports = function(environment) {
 
     APP: {
       // Here you can pass flags/options to your application instance
-      // when it is created
+      // when is created
     }
   };
 
