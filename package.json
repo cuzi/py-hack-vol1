@@ -38,6 +38,7 @@
     "ember-load-initializers": "^0.5.1",
     "ember-paper": "1.0.0-alpha.10",
     "ember-resolver": "^2.0.3",
+    "emberfire": "2.0.5",
     "loader.js": "^4.0.1"
   }
 }
