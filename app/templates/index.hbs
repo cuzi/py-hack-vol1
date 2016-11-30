@@ -5,7 +5,6 @@
       {{#paper-card as |card|}}
         {{#card.title as |title|}}
           {{#title.text as |text|}}
-            {{#text.headline}}John Snow{{/text.headline}}
 
             {{paper-input label="User Name" type="text" value=model.userName onChange=(action (mut model.userName)) iconRight="person"}}
 
@@ -16,8 +15,8 @@
           {{title.media size="lg" src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png' alt="Tomster" title="Tomster"}}
         {{/card.title}}
         {{#paper-radio-group
-        groupValue=(readonly selectedFruit) class="ChenealValues"
-        onChange=(action (mut selectedFruit)) as |group|}}
+        groupValue=(readonly model.channel) class="ChenealValues"
+        onChange=(action (mut model.channel)) as |group|}}
           {{#group.radio value="Chat" primary=true}} Chat {{/group.radio}}
           {{#group.radio value="SocialNetwork" warn=true}} Social Network {{/group.radio}}
           {{#group.radio value="Email"}} Email {{/group.radio}}
