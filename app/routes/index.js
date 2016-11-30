@@ -11,10 +11,6 @@ export default Ember.Route.extend({
     registerListener: function(){
 
     }.on('init'),
-    actions:{
-      login(){
-        
-      }
-    }
+    
 
 });

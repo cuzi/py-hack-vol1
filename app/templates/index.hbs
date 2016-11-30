@@ -1,15 +1,15 @@
 <h3 class="login-title">Care Center</h3>
 <div class="layout-row layout-xs-column">
-  {{#paper-form onSubmit=(route-action "login") as |form|}}
+  {{#paper-form onSubmit=(action "login") as |form|}}
     <div class="layout-column flex-xs flex-gt-xs-50 relative-card">
       {{#paper-card as |card|}}
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}}John Snow{{/text.headline}}
 
-            {{paper-input label="User Name" type="text" value=name2 onChange=(action (mut name2)) iconRight="person"}}
+            {{paper-input label="User Name" type="text" value=model.userName onChange=(action (mut model.userName)) iconRight="person"}}
 
-            {{paper-input label="Station Number" type="number" value=statsion onChange=(action (mut statsion)) iconRight="person_pin_circle"}}
+            {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut model.station)) iconRight="person_pin_circle"}}
 
 
           {{/title.text}}
