@@ -1,3 +1,27 @@
-
-index page
+<h3 class="login-title">Care Center</h3>
+<div class="layout-row layout-xs-column">
+    <div class="layout-column flex-xs flex-gt-xs-50 relative-card">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}John Snow{{/text.headline}}
+            {{paper-input label="User Name " type="text" value=name2 onChange=(action (mut name2)) iconRight="person"}}
+            {{paper-input label="Statsion number " type="text" value=name2 onChange=(action (mut name2)) iconRight="person_pin_circle"}}
+          {{/title.text}}
+          {{title.media size="lg" src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png' alt="Tomster" title="Tomster"}}
+        {{/card.title}}
+        {{#paper-radio-group
+        groupValue=(readonly selectedFruit)
+        onChange=(action (mut selectedFruit)) as |group|}}
+          {{#group.radio value="Apple" primary=true}} Apple {{/group.radio}}
+          {{#group.radio value="Banana" warn=true}} Banana {{/group.radio}}
+          {{#group.radio value="Mango"}} Mango {{/group.radio}}
+        {{/paper-radio-group}}
+        {{#card.actions}}
+          {{#paper-button}}Action 1{{/paper-button}}
+          {{#paper-button}}Action 2{{/paper-button}}
+        {{/card.actions}}
+      {{/paper-card}}
+      </div>
+  </div>
 {{outlet}}
