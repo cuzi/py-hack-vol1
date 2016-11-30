@@ -54,5 +54,35 @@ body {
       float: left !important;
       position:absolute;
     }
+    .ChenealValues{
+      margin:0 auto;
+    }
+  }
+  .md-focused {
+    .lastinput.md-checked {
+      .md-ink-ripple {
+        &::before {
+          background-color: rgba(220, 231, 117, 0.46) !important;
+
+        }
+      }
+    }
+  }
+
+  .lastinput.md-checked .md-off {
+    border-color:  #DCE775 !important;
+  }
+
+  .md-radio-button .md-container:before{
+    background-color:  #DCE775 !important;
+  }
+  .lastinput{
+    .md-on{
+      background-color:#DCE775;
+    }
+    .md-ink-ripple {
+      color: #DCE775 !important;
+    }
+
   }
 }
