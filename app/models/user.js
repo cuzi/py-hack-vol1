@@ -6,6 +6,6 @@ export default DS.Model.extend({
     mail: DS.attr('string'),
     name: DS.attr('string'),
     station: DS.attr('number'),
-    channel: DS.attr('number'),
+    channel: DS.attr('string'),
     requets: DS.hasMany('request', { async: false }),
 });
