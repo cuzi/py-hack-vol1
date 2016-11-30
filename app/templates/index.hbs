@@ -1,27 +1,32 @@
 <h3 class="login-title">Care Center</h3>
+
 <div class="layout-row layout-xs-column">
   {{#paper-form onSubmit=(action "login") as |form|}}
     <div class="layout-column flex-xs flex-gt-xs-50 relative-card">
       {{#paper-card as |card|}}
         {{#card.title as |title|}}
           {{#title.text as |text|}}
+            
+              {{title.media size="lg" src=userImage alt="Tomster" title="Tomster"}}
+            {{paper-input label="User Name" type="text" value=userName onChange=(action (mut userName)) iconRight="person"}}
+            {{#if isUser}}
+            
+              {{#if isAdmin}}
+              {{else}}
+              {{paper-input label="Station Number" type="number" value=station onChange=(action (mut station)) iconRight="person_pin_circle"}}
 
-            {{paper-input label="User Name" type="text" value=model.userName onChange=(action (mut model.userName)) iconRight="person"}}
 
-            {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut model.station)) iconRight="person_pin_circle"}}
-
-
+                {{#paper-radio-group groupValue=(readonly channel) class="ChenealValues"
+                    onChange=(action (mut channel)) as |group|}}
+                  {{#group.radio value="Chat" primary=true}} Chat {{/group.radio}}
+                  {{#group.radio value="SocialNetwork" warn=true}} Social Network {{/group.radio}}
+                  {{#group.radio value="Email"}} Email {{/group.radio}}
+                  {{#group.radio class='lastinput' value="Phone" success=true}} Phone {{/group.radio}}
+                {{/paper-radio-group}}
+              {{/if}}
+            {{/if}}
           {{/title.text}}
-          {{title.media size="lg" src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png' alt="Tomster" title="Tomster"}}
         {{/card.title}}
-        {{#paper-radio-group
-        groupValue=(readonly model.channel) class="ChenealValues"
-        onChange=(action (mut model.channel)) as |group|}}
-          {{#group.radio value="Chat" primary=true}} Chat {{/group.radio}}
-          {{#group.radio value="SocialNetwork" warn=true}} Social Network {{/group.radio}}
-          {{#group.radio value="Email"}} Email {{/group.radio}}
-          {{#group.radio class='lastinput' value="Phone" success=true}} Phone {{/group.radio}}
-        {{/paper-radio-group}}
         {{#card.actions}}
         {{#form.submit-button raised=true primary=true}}Login{{/form.submit-button}}
         {{/card.actions}}

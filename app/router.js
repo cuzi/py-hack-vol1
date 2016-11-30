@@ -6,9 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('admin');
+  this.route('admin', { path: "admin/:userName" });
   this.route('dashboard');
-  this.route('user');
+  this.route('user', { path: "user/:userName" });
 });
 
 export default Router;
