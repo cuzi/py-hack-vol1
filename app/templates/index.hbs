@@ -17,10 +17,10 @@
         {{#paper-radio-group
         groupValue=(readonly model.channel) class="ChenealValues"
         onChange=(action (mut model.channel)) as |group|}}
-          {{#group.radio value="Chat" primary=true}} Chat {{/group.radio}}
-          {{#group.radio value="SocialNetwork" warn=true}} Social Network {{/group.radio}}
-          {{#group.radio value="Email"}} Email {{/group.radio}}
-          {{#group.radio class='lastinput' value="Phone" success=true}} Phone {{/group.radio}}
+          {{#group.radio value="1" primary=true}} Chat {{/group.radio}}
+          {{#group.radio value="2" warn=true}} Social Network {{/group.radio}}
+          {{#group.radio class='lastinput' value="3"}} Email {{/group.radio}}
+          {{#group.radio  value="4"}} Calls {{/group.radio}}
         {{/paper-radio-group}}
         {{#card.actions}}
         {{#form.submit-button raised=true primary=true}}Login{{/form.submit-button}}
