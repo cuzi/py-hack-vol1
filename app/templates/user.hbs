@@ -1,19 +1,26 @@
 {{outlet}}
-<div class="layout-column flex-xs flex-gt-xs-70">
-  {{#paper-card as |card|}}
-    {{#card.title as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline}} {{model.userName}} {{/text.headline}}
-        {{#text.subhead}}{{model.station}}{{/text.subhead}}
-        {{#text.subhead}}{{model.channel}}{{/text.subhead}}
-      {{/title.text}}
-      {{title.media size="lg" src=model.image alt="Tomster" title="Tomster"}}
-    {{/card.title}}
-    {{#card.actions}}
-      {{#paper-button onClick=(action "openModal")}}Edit{{/paper-button}}
-    {{/card.actions}}
-  {{/paper-card}}
-</div>
+ <div class="layout layout-sm-row">
+   <div class="layout-column flex-xs flex-gt-xs-70">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}} {{model.userName}} {{/text.headline}}
+          {{#text.subhead}}{{model.station}}{{/text.subhead}}
+          {{#text.subhead}}{{model.channel}}{{/text.subhead}}
+        {{/title.text}}
+        {{title.media size="lg" src=model.image alt="Tomster" title="Tomster"}}
+      {{/card.title}}
+      {{#card.actions}}
+        {{#paper-button onClick=(action "openModal")}}Edit{{/paper-button}}
+      {{/card.actions}}
+    {{/paper-card}}
+  </div>
+  <div class="layout-column flex-xs flex-gt-xs-30">
+      {{que-table requests=model.requests}}
+    </div>
+
+ </div>
+
 <div class="layout-column flex-xs flex-gt-xs-70">
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
@@ -96,3 +103,4 @@
 {{/if}}
 
 </div>
+

@@ -8,6 +8,7 @@ export default DS.Model.extend({
     topic:       DS.attr('string'),
     channel:     DS.attr('number'),
     status:      DS.attr('string'),
+    call_status: DS.attr('string'),
     req_time:    DS.attr('date'),
     user:        DS.belongsTo('user'),
     tier:        DS.attr('string'),

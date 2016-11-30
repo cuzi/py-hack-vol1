@@ -18,10 +18,10 @@
 
                 {{#paper-radio-group groupValue=(readonly channel) class="ChenealValues"
                     onChange=(action (mut channel)) as |group|}}
-                  {{#group.radio value="Chat" primary=true}} Chat {{/group.radio}}
-                  {{#group.radio value="SocialNetwork" warn=true}} Social Network {{/group.radio}}
-                  {{#group.radio value="Email"}} Email {{/group.radio}}
-                  {{#group.radio class='lastinput' value="Phone" success=true}} Phone {{/group.radio}}
+                  {{#group.radio value="1" primary=true}} Chat {{/group.radio}}
+                  {{#group.radio value="2" warn=true}} Social Network {{/group.radio}}
+                  {{#group.radio value="3"}} Email {{/group.radio}}
+                  {{#group.radio class='lastinput' value="4" success=true}} Phone {{/group.radio}}
                 {{/paper-radio-group}}
               {{/if}}
             {{/if}}

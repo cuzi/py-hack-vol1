@@ -40,15 +40,18 @@ export default Ember.Controller.extend({
       }
 
     },
+    cancelCall(){
+
+    },
     submitRequest: function() {
-      console.log('on submit')
-      console.log(this.get('topic'))
+
       var request = this.store.createRecord('request', {
       topic: this.get('topic'),
       tier:this.get('tier'),
       description:this.get('desc'),
-      status:this.get('callStatus.value'),
+      call_status:this.get('callStatus.value'),
       c_id:this.get('Cid'),
+      status:"pending",
       incident:this.get('incident'),
       start_time: new Date(),
       user: this.get('model')

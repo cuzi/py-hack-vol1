@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
           }
          );
          user.save();
-        this.transitionToRoute('user', {userName: this.get('userName') });
+        this.transitionToRoute('/user/' + this.get('userName'));
        });
       }
 

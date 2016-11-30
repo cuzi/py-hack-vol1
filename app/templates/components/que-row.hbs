@@ -1,1 +1,11 @@
-{{yield}}
+{{#paper-item class="md-3-line"}}
+    <img src="http://www.freeiconspng.com/uploads/warning-icon-png-1.png"  class="md-avatar">
+    <div class="md-list-item-text">
+        <h3>{{request.topic}}</h3>
+        <h4>{{request.description}}</h4>
+        <p>{{request.req_time}}</p>
+    </div>
+    {{#paper-button iconButton=true class="md-secondary"  }}
+        {{paper-icon "cancel"}}
+    {{/paper-button}}
+{{/paper-item}}
