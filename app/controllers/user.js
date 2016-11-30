@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    login() {
+    callForHelp() {
       if (this.get('model.userName') === 'dashboard') {
         this.transitionToRoute('dashboard',this.get('model'));
       }

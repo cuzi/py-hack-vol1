@@ -1,5 +1,5 @@
 {{outlet}}
-<div class="layout-column flex-xs flex-gt-xs-100">
+<div class="layout-column flex-xs flex-gt-xs-70">
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
       {{#title.text as |text|}}
@@ -14,19 +14,80 @@
     {{/card.actions}}
   {{/paper-card}}
 </div>
-<div class="layout-column flex-xs flex-gt-xs-100">
+<div class="layout-column flex-xs flex-gt-xs-70">
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
       {{#title.text as |text|}}
         {{#text.headline}} Request for Help {{/text.headline}}
-        {{#text.subhead}}model.station{{/text.subhead}}
-        {{#text.subhead}}model.channel{{/text.subhead}}
+        {{#paper-form onSubmit=(action "callForHelp") as |form|}}
+  <div class="layout-row">
+    <div class="layout-column flex-100">
+      {{form.input label="topic" value=firstName onChange=(action (mut firstName)) required=true}}
+    </div>
+  </div>
+  <div class="layout-row">
+    <div class="layout-column flex-100">
+      {{paper-input
+        type="number"
+        label="Tier"
+        value=maxNumber
+        onChange=(action (mut maxNumber))
+        min="1"
+        max="7"
+        errorMessages=(hash
+          max="Enter 5 or less."
+        )
+      }}
+    </div>
+  </div>
+    <div class="layout-row">
+        <div class="layout-column flex-100">
+          {{#paper-select options=sizes label="Call Status" required=true selected=pizzaSize onChange=(action (mut pizzaSize)) as |size|}}
+            {{size}}
+          {{/paper-select}}
+        </div>
+  </div>
+  <div class="layout-row">
+    <div class="layout-column flex-100">
+      {{form.input label="CustomerID" value=Cid onChange=(action (mut Cid)) required=false}}
+    </div>
+  </div>
+  <div class="layout-row">
+    <div class="layout-column flex-100">
+      {{form.input label="Description" value=desc onChange=(action (mut desc)) required=false}}
+    </div>
+  </div>
+  <div class="layout-row">
+    <div class="layout-column flex-100">
+      {{form.input label="Inccident" value=Inccident onChange=(action (mut Inccident)) required=false}}
+    </div>
+  </div>
+  <div class="layout-row">
+    {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+  </div>
+{{/paper-form}}
       {{/title.text}}
-      {{title.media size="lg" src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png" alt="Tomster" title="Tomster"}}
     {{/card.title}}
-    {{#card.actions}}
-      {{#paper-button}}Ask For Help{{/paper-button}}
-    {{/card.actions}}
   {{/paper-card}}
+  {{#if showPromptDialog}}
+  {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
+
+    {{#paper-dialog-content}}
+      <h2 class="md-title">What would you name your dog?</h2>
+      <p>Bowser is a common name.</p>
+      {{paper-input placeholder="dog name" autofocus=true value=dogName onChange=(action (mut dogName))}}
+      <div>
+        {{#paper-checkbox value=fullscreen onChange=(action (mut fullscreen))}}Display fullscreen at small window size breakpoints{{/paper-checkbox}}
+      </div>
+    {{/paper-dialog-content}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}I'm a cat person{{/paper-button}}
+      {{#paper-button primary=true onClick=(action "closePromptDialog" "ok" dogName)}}Okay!{{/paper-button}}
+    {{/paper-dialog-actions}}
+
+  {{/paper-dialog}}
+{{/if}}
 
 </div>
