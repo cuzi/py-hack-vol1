@@ -8,6 +8,7 @@ export default Ember.Route.extend({
 
        return this.store.query('user', {'userName':  params.userName}).then((users) => {
            this.store.findAll('request');
+         return users;
        });
    }
 });
