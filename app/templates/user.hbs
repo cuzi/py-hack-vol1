@@ -14,6 +14,7 @@
       {{/card.title}}
       {{#card.actions}}
         {{#paper-button onClick=(action "openModal")}}Edit{{/paper-button}}
+          {{#paper-button onClick=(action "logOut")}}Log out{{/paper-button}}
       {{/card.actions}}
     {{/paper-card}}
 
