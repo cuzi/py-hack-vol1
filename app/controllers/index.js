@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
         this.transitionToRoute('dashboard');
       }
       else if (this.get('isAdmin')) {
-        this.transitionToRoute('admin', {userName: this.get('userName') } );
+        this.transitionToRoute('/admin/' + this.get('userName'));
       }
       else if  (this.get('isUser')) {
        this.store.query('user', {'userName':  this.get('userName')}).then((users) => {

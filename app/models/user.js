@@ -8,5 +8,5 @@ export default DS.Model.extend({
     station: DS.attr('number'),
     isAdmin: DS.attr('boolean'),
     channel: DS.attr('string'),
-    requests: DS.hasMany('request', { async: false })
+    requests: DS.hasMany('request')
 });

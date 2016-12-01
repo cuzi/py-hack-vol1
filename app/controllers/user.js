@@ -25,15 +25,15 @@ export default Ember.Controller.extend({
     // body
   }),
   requestsChanged:  Ember.observer('model.requests', function() {
-    this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
-        let user =  users.findBy('userName', this.get('userName'));
-        user.setProperties( {
-            station: this.get('model.station'),
-            channel: this.get('model.channel')
-          }
-        );
-        user.save();
-       });
+    // this.store.query('user', {'userName':  this.get('model.userName')}).then((users) => {
+    //     let user =  users.findBy('userName', this.get('model.userName'));
+    //     user.setProperties( {
+    //         station: this.get('model.station'),
+    //         channel: this.get('model.channel')
+    //       }
+    //     );
+    //     user.save();
+    //    });
     // body
   }),
   cheanelString: Ember.computed('model.channel', function() {
