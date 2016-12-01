@@ -6,7 +6,7 @@ export default DS.Model.extend({
     c_country:   DS.attr('string'),
     description: DS.attr('string'),
     topic:       DS.attr('string'),
-    channel:     DS.attr('number'),
+    channel:     DS.attr('string'),
     status:      DS.attr('string'),
     call_status: DS.attr('string'),
     req_time:    DS.attr('date'),

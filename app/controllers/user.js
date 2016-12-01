@@ -27,18 +27,6 @@ export default Ember.Controller.extend({
     logOut(){
       this.transitionToRoute('index' );
     },
-    edit() {
-      if (this.get('model.userName') === 'dashboard') {
-        this.transitionToRoute('dashboard');
-      }
-      else if (this.get('model.isAdmin')) {
-        this.transitionToRoute('admin');
-      }
-      else if  (true) {
-        this.transitionToRoute('user' );
-      }
-
-    },
     cancelCall(){
 
     },
@@ -46,8 +34,8 @@ export default Ember.Controller.extend({
       this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
         let user =  users.findBy('userName', this.get('userName'));
         user.setProperties( {
-            station: this.get('station'),
-            channel: this.get('channel')
+            station: this.get('model.station'),
+            channel: this.get('model.channel')
           }
         );
         user.save();
@@ -59,6 +47,7 @@ export default Ember.Controller.extend({
       var request = this.store.createRecord('request', {
         topic: this.get('topic'),
         tier:this.get('tier'),
+        channel: this.get('model.channel'),
         description:this.get('desc'),
         call_status:this.get('callSelectedStatus.value'),
         c_id:this.get('Cid'),

@@ -84,4 +84,28 @@ body {
     }
 
   }
+  [class*="channel"] {
+    background: white;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    max-width: 98%;
+    margin-top: 8px;
+  }
+  .channel-1 {
+    border-left: 4px solid navy;
+    
+  }
+  .channel-2 {
+    border-left: 4px solid orange;
+    
+  }
+  .channel-3 {
+    border-left: 4px solid pink;
+    
+  }
+  .channel-4 {
+    border-left: 24px solid palegoldenrod;
+    
+  }
+
 }
