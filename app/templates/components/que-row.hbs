@@ -3,12 +3,12 @@
 
         <img src={{if isAdmin request.user.image imageUrl}}  class="md-avatar">
         <div class="md-list-item-text">
-            <h3><b>Topic: </b>{{request.topic}}</h3>
-            <h4><b>Description: </b>{{request.description}}</h4>
-            <p><b>Time added: </b>{{request.req_time}}</p>
+            <div><b>Topic: </b>{{request.topic}}</div>
+            <div><b>Description: </b>{{request.description}}</div>
+            <div><b>Time passed: </b>{{timeFrom}}</div>
             {{#if isAdmin}}
-                <span class="station"><b>Station:</b>{{request.user.station}}</span>
-                <span class="tier"><b>Tier: </b>{{request.user.tier}}</span>
+                <div class="station"><b>Station: </b>{{request.user.station}}</div>
+                <div class="tier"><b>Tier: </b>{{request.user.tier}}</div>
 
             {{/if}}
         </div>

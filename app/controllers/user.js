@@ -8,15 +8,15 @@ export default Ember.Controller.extend({
       value:1
     },
     {
-      name: 'A faw minutes ago',
+      name: 'Over 10 minutes',
       value:2
     },
     {
-      name: 'Over 10 minutes',
+      name: 'Over 20 minutes',
       value:3
     },
     {
-      name: 'Over 20 minutes',
+      name: 'Over 30 minutes',
       value:4
     },
   ],
