@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     tagname: '',
-    timeFrom: Ember.computed('request.req_time', function() {
+    timeFrom: Ember.computed('request.req_time', 'inter', function() {
         var a = moment();//now
         var b = moment(this.get('request.req_time'));
 
