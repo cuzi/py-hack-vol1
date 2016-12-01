@@ -22,7 +22,6 @@ export default Ember.Controller.extend({
   ],
   showStatusSelect:  Ember.computed('model.channel', function() {
     return (this.get('model.channel') == '1' ||this.get('model.channel') == '4')
-    // body
   }),
   actions: {
     logOut(){
@@ -52,7 +51,6 @@ export default Ember.Controller.extend({
           }
         );
         user.save();
-        this.transitionToRoute('/user/' + this.get('userName'));
        });
       this.send('closePromptDialog');
     },
