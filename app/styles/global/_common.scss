@@ -2,6 +2,7 @@
 
 body {
     background: #f1f1f1;
+        height: initial !important;
   .login-title{
     color: #d54d7b;
     font-family: "Great Vibes", cursive;
@@ -50,7 +51,7 @@ body {
       transform: translateX(-50%);
       /* float: left !important; */
       position: absolute;
-          border-radius: 50%;
+      border-radius: 50%;
     }
     .ChenealValues{
       margin:0 auto;

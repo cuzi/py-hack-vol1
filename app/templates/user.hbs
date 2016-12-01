@@ -1,5 +1,7 @@
 {{outlet}}
  <div class="layout layout-sm-row">
+    <div class="layout layout-sm-row">
+    </div>
    <div class="layout-column flex-xs flex-gt-xs-70">
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
@@ -14,93 +16,89 @@
         {{#paper-button onClick=(action "openModal")}}Edit{{/paper-button}}
       {{/card.actions}}
     {{/paper-card}}
+
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}} Request for Help {{/text.headline}}
+        {{#paper-form onSubmit=(action "submitRequest") as |form|}}
+          <div class="layout-row">
+            <div class="layout-column flex-100">
+              {{form.input label="topic" value=topic onChange=(action (mut topic)) required=true}}
+            </div>
+          </div>
+          <div class="layout-row">
+            <div class="layout-column flex-100">
+              {{paper-input
+                type="number"
+                label="Tier"
+                value=tier
+                onChange=(action (mut tier))
+                min="1"
+                max="7"
+                errorMessages=(hash
+                  max="Enter 5 or less."
+                )
+              }}
+            </div>
+          </div>
+            <div class="layout-row">
+                <div class="layout-column flex-100">
+                  {{#paper-select options=callStatus label="Call Status" required=true selected=callSelectedStatus onChange=(action (mut callSelectedStatus)) as |status|}}
+                    {{status.name}}
+                  {{/paper-select}}
+                </div>
+          </div>
+          <div class="layout-row">
+            <div class="layout-column flex-100">
+              {{form.input label="CustomerID" value=Cid onChange=(action (mut Cid)) required=false}}
+            </div>
+          </div>
+          <div class="layout-row">
+            <div class="layout-column flex-100">
+              {{form.input label="Description" value=desc onChange=(action (mut desc)) required=false}}
+            </div>
+          </div>
+          <div class="layout-row">
+            <div class="layout-column flex-100">
+              {{form.input label="incident" value=incident onChange=(action (mut incident)) required=false}}
+            </div>
+          </div>
+          <div class="layout-row">
+            {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+          </div>
+        {{/paper-form}}
+          {{/title.text}}
+        {{/card.title}}
+      {{/paper-card}}
+      {{#if modalShown}}
+      {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
+
+        {{#paper-dialog-content}}
+          <h2 class="md-title">Edit Profile</h2>
+          {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut station)) iconRight="person_pin_circle"}}
+
+
+            {{#paper-radio-group groupValue=(readonly model.channel) class="ChenealValues"
+                onChange=(action (mut model.channel)) as |group|}}
+              {{#group.radio  class="radioCenter" value="1" primary=true}} Chat {{/group.radio}}
+              {{#group.radio class="radioCenter" value="2" warn=true}} Social Network {{/group.radio}}
+              {{#group.radio  class="radioCenter" value="3"}} Email {{/group.radio}}
+              {{#group.radio  class='lastinput radioCenter' value="4" success=true}} Phone {{/group.radio}}
+            {{/paper-radio-group}}
+        {{/paper-dialog-content}}
+
+        {{#paper-dialog-actions class="layout-row"}}
+          <span class="flex"></span>
+          {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Oops ! {{/paper-button}}
+          {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE!{{/paper-button}}
+        {{/paper-dialog-actions}}
+
+      {{/paper-dialog}}
+    {{/if}}
   </div>
   <div class="layout-column flex-xs flex-gt-xs-30">
       {{que-table requests=model.requests}}
     </div>
 
  </div>
-<div class="layout layout-sm-row">
-<div class="layout-column flex-xs flex-gt-xs-70">
-  {{#paper-card as |card|}}
-    {{#card.title as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline}} Request for Help {{/text.headline}}
-    {{#paper-form onSubmit=(action "submitRequest") as |form|}}
-      <div class="layout-row">
-        <div class="layout-column flex-100">
-          {{form.input label="topic" value=topic onChange=(action (mut topic)) required=true}}
-        </div>
-      </div>
-      <div class="layout-row">
-        <div class="layout-column flex-100">
-          {{paper-input
-            type="number"
-            label="Tier"
-            value=tier
-            onChange=(action (mut tier))
-            min="1"
-            max="7"
-            errorMessages=(hash
-              max="Enter 5 or less."
-            )
-          }}
-        </div>
-      </div>
-        <div class="layout-row">
-            <div class="layout-column flex-100">
-              {{#paper-select options=callStatus label="Call Status" required=true selected=callSelectedStatus onChange=(action (mut callSelectedStatus)) as |status|}}
-                {{status.name}}
-              {{/paper-select}}
-            </div>
-      </div>
-      <div class="layout-row">
-        <div class="layout-column flex-100">
-          {{form.input label="CustomerID" value=Cid onChange=(action (mut Cid)) required=false}}
-        </div>
-      </div>
-      <div class="layout-row">
-        <div class="layout-column flex-100">
-          {{form.input label="Description" value=desc onChange=(action (mut desc)) required=false}}
-        </div>
-      </div>
-      <div class="layout-row">
-        <div class="layout-column flex-100">
-          {{form.input label="incident" value=incident onChange=(action (mut incident)) required=false}}
-        </div>
-      </div>
-      <div class="layout-row">
-        {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
-      </div>
-    {{/paper-form}}
-      {{/title.text}}
-    {{/card.title}}
-  {{/paper-card}}
-  {{#if modalShown}}
-  {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
-
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Edit Profile</h2>
-      {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut station)) iconRight="person_pin_circle"}}
-
-
-        {{#paper-radio-group groupValue=(readonly model.channel) class="ChenealValues"
-            onChange=(action (mut model.channel)) as |group|}}
-          {{#group.radio  class="radioCenter" value="1" primary=true}} Chat {{/group.radio}}
-          {{#group.radio class="radioCenter" value="2" warn=true}} Social Network {{/group.radio}}
-          {{#group.radio  class="radioCenter" value="3"}} Email {{/group.radio}}
-          {{#group.radio  class='lastinput radioCenter' value="4" success=true}} Phone {{/group.radio}}
-        {{/paper-radio-group}}
-    {{/paper-dialog-content}}
-
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Oops ! {{/paper-button}}
-      {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE!{{/paper-button}}
-    {{/paper-dialog-actions}}
-
-  {{/paper-dialog}}
-{{/if}}
-
-</div>
-</div>
