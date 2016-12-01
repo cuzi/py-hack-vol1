@@ -4,16 +4,20 @@ export default Ember.Controller.extend({
 
   callStatus: [
     {
-      name: 'Just started'
+      name: 'Just started',
+      value:1
     },
     {
-      name: 'A faw minutes ago'
+      name: 'A faw minutes ago',
+      value:2
     },
     {
-      name: 'Over 10 minutes'
+      name: 'Over 10 minutes',
+      value:3
     },
     {
-      name: 'Over 20 minutes'
+      name: 'Over 20 minutes',
+      value:4
     },
   ],
   showStatusSelect:  Ember.computed('model.channel', function() {
@@ -36,19 +40,10 @@ export default Ember.Controller.extend({
     logOut(){
       this.transitionToRoute('index' );
     },
-    edit() {
-      if (this.get('model.userName') === 'dashboard') {
-        this.transitionToRoute('dashboard');
-      }
-      else if (this.get('model.isAdmin')) {
-        this.transitionToRoute('admin');
-      }
-      else if  (true) {
-        this.transitionToRoute('user' );
-      }
+    cancelCall(){
 
     },
-updateUserDetails() {
+    updateUserDetails() {
       this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
         let user =  users.findBy('userName', this.get('userName'));
         user.setProperties( {
@@ -60,22 +55,27 @@ updateUserDetails() {
        });
       this.send('closePromptDialog');
     },
-
     submitRequest: function() {
-        console.log('on submit')
-        console.log(this.get('topic'))
-        var request = this.store.createRecord('request', {
+
+      var request = this.store.createRecord('request', {
         topic: this.get('topic'),
         tier:this.get('tier'),
+        channel: this.get('model.channel'),
         description:this.get('desc'),
-        status:this.get('callStatus.value'),
+        call_status:this.get('callSelectedStatus.value'),
         c_id:this.get('Cid'),
+        status:"pending",
         incident:this.get('incident'),
-        start_time: new Date().getTime(),
+        start_time: new Date(),
+        user: this.get('model')
       });
       request.save();
-    }
-,
+      this.set('topic', '');
+      this.set('tier', null);
+      this.set('desc', '');
+      this.set('Cid', '');
+      this.set('callSelectedStatus.value', '');
+    },
     openModal(){
       this.set('modalShown', true)
     },
