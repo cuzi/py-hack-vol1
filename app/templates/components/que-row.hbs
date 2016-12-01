@@ -6,6 +6,12 @@
             <h3>{{request.topic}}</h3>
             <h4>{{request.description}}</h4>
             <p>{{request.req_time}}</p>
+            {{#if isAdmin}}
+                <span class="station">{{request.user.station}}</span>
+                <span class="tier">{{request.user.tirer}}</span>
+                <span class="tier">{{request.user.tirer}}</span>
+
+            {{/if}}
         </div>
         {{#paper-button iconButton=true onClick=(action 'deleteRow') class="md-secondary"  }}
             {{#if isAdmin}}

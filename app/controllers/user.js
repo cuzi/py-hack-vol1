@@ -87,6 +87,7 @@ export default Ember.Controller.extend({
       this.set('desc', '');
       this.set('Cid', '');
       this.set('callSelectedStatus.value', '');
+      this.set('incident', '');
     },
     openModal(){
       this.set('modalShown', true)
