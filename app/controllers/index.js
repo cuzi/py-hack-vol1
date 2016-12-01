@@ -45,8 +45,8 @@ export default Ember.Controller.extend({
        this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
          let user =  users.findBy('userName', this.get('userName'));
          user.setProperties( {
-            station: this.get('station'),
-            channel: this.get('channel')
+            station: this.get('model.station'),
+            channel: this.get('model.channel')
           }
          );
          user.save();
