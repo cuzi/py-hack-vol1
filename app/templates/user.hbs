@@ -49,7 +49,7 @@
       </div>
         <div class="layout-row">
             <div class="layout-column flex-100">
-              {{#paper-select options=callStatus label="Call Status" required=true selected=callStatus onChange=(action (mut callStatus)) as |status|}}
+              {{#paper-select options=callStatus label="Call Status" required=true selected=callSelectedStatus onChange=(action (mut callSelectedStatus)) as |status|}}
                 {{status.name}}
               {{/paper-select}}
             </div>
@@ -81,22 +81,22 @@
 
     {{#paper-dialog-content}}
       <h2 class="md-title">Edit Profile</h2>
-      {{paper-input label="Station Number" type="number" value=station onChange=(action (mut station)) iconRight="person_pin_circle"}}
+      {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut station)) iconRight="person_pin_circle"}}
 
 
-        {{#paper-radio-group groupValue=(readonly channel) class="ChenealValues"
-            onChange=(action (mut channel)) as |group|}}
-          {{#group.radio  class="radioCenter" value="Chat" primary=true}} Chat {{/group.radio}}
-          {{#group.radio class="radioCenter" value="SocialNetwork" warn=true}} Social Network {{/group.radio}}
-          {{#group.radio  class="radioCenter" value="Email"}} Email {{/group.radio}}
-          {{#group.radio  class='lastinput radioCenter' value="Phone" success=true}} Phone {{/group.radio}}
+        {{#paper-radio-group groupValue=(readonly model.channel) class="ChenealValues"
+            onChange=(action (mut model.channel)) as |group|}}
+          {{#group.radio  class="radioCenter" value="1" primary=true}} Chat {{/group.radio}}
+          {{#group.radio class="radioCenter" value="2" warn=true}} Social Network {{/group.radio}}
+          {{#group.radio  class="radioCenter" value="3"}} Email {{/group.radio}}
+          {{#group.radio  class='lastinput radioCenter' value="4" success=true}} Phone {{/group.radio}}
         {{/paper-radio-group}}
     {{/paper-dialog-content}}
 
     {{#paper-dialog-actions class="layout-row"}}
       <span class="flex"></span>
       {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Oops ! {{/paper-button}}
-      {{#paper-button primary=true onClick=(action "closePromptDialog" "ok" dogName)}}DONE!{{/paper-button}}
+      {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE!{{/paper-button}}
     {{/paper-dialog-actions}}
 
   {{/paper-dialog}}

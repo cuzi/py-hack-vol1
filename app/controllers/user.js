@@ -43,22 +43,39 @@ export default Ember.Controller.extend({
     cancelCall(){
 
     },
+    updateUserDetails() {
+      this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
+        let user =  users.findBy('userName', this.get('userName'));
+        user.setProperties( {
+            station: this.get('station'),
+            channel: this.get('channel')
+          }
+        );
+        user.save();
+        this.transitionToRoute('/user/' + this.get('userName'));
+       });
+      this.send('closePromptDialog');
+    },
     submitRequest: function() {
 
       var request = this.store.createRecord('request', {
-      topic: this.get('topic'),
-      tier:this.get('tier'),
-      description:this.get('desc'),
-      call_status:this.get('callStatus.value'),
-      c_id:this.get('Cid'),
-      status:"pending",
-      incident:this.get('incident'),
-      start_time: new Date(),
-      user: this.get('model')
+        topic: this.get('topic'),
+        tier:this.get('tier'),
+        description:this.get('desc'),
+        call_status:this.get('callSelectedStatus.value'),
+        c_id:this.get('Cid'),
+        status:"pending",
+        incident:this.get('incident'),
+        start_time: new Date(),
+        user: this.get('model')
       });
       request.save();
-    }
-,
+      this.set('topic', '');
+      this.set('tier', null);
+      this.set('desc', '');
+      this.set('Cid', '');
+      this.set('callSelectedStatus.value', '');
+    },
     openModal(){
       this.set('modalShown', true)
     },
