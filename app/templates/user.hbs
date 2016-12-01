@@ -8,7 +8,7 @@
         {{#title.text as |text|}}
           {{#text.headline}} {{model.userName}} {{/text.headline}}
           {{#text.subhead}}{{model.station}}{{/text.subhead}}
-          {{#text.subhead}}{{model.channel}}{{/text.subhead}}
+          {{#text.subhead}}{{cheanelString}}{{/text.subhead}}
         {{/title.text}}
         {{title.media size="lg" src=model.image alt="Tomster" title="Tomster"}}
       {{/card.title}}
@@ -72,30 +72,30 @@
         {{/card.title}}
       {{/paper-card}}
       {{#if modalShown}}
-      {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
+        {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
 
-        {{#paper-dialog-content}}
-          <h2 class="md-title">Edit Profile</h2>
-          {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut station)) iconRight="person_pin_circle"}}
+          {{#paper-dialog-content}}
+            <h2 class="md-title">Edit Profile</h2>
+            {{paper-input label="Station Number" type="number" value=model.station onChange=(action (mut station)) iconRight="person_pin_circle"}}
 
 
-            {{#paper-radio-group groupValue=(readonly model.channel) class="ChenealValues"
-                onChange=(action (mut model.channel)) as |group|}}
-              {{#group.radio  class="radioCenter" value="1" primary=true}} Chat {{/group.radio}}
-              {{#group.radio class="radioCenter" value="2" warn=true}} Social Network {{/group.radio}}
-              {{#group.radio  class="radioCenter" value="3"}} Email {{/group.radio}}
-              {{#group.radio  class='lastinput radioCenter' value="4" success=true}} Phone {{/group.radio}}
-            {{/paper-radio-group}}
-        {{/paper-dialog-content}}
+              {{#paper-radio-group groupValue=(readonly model.channel) class="ChenealValues"
+                  onChange=(action (mut model.channel)) as |group|}}
+                {{#group.radio  class="radioCenter" value="1" primary=true}} Chat {{/group.radio}}
+                {{#group.radio class="radioCenter" value="2" warn=true}} Social Network {{/group.radio}}
+                {{#group.radio  class="radioCenter" value="3"}} Email {{/group.radio}}
+                {{#group.radio  class='lastinput radioCenter' value="4" success=true}} Phone {{/group.radio}}
+              {{/paper-radio-group}}
+          {{/paper-dialog-content}}
 
-        {{#paper-dialog-actions class="layout-row"}}
-          <span class="flex"></span>
-          {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Oops ! {{/paper-button}}
-          {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE!{{/paper-button}}
-        {{/paper-dialog-actions}}
+          {{#paper-dialog-actions class="layout-row"}}
+            <span class="flex"></span>
+            {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Oops ! {{/paper-button}}
+            {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE!{{/paper-button}}
+          {{/paper-dialog-actions}}
 
-      {{/paper-dialog}}
-    {{/if}}
+        {{/paper-dialog}}
+      {{/if}}
   </div>
   <div class="layout-column flex-xs flex-gt-xs-30">
       {{que-table requests=model.requests}}

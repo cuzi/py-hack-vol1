@@ -4,24 +4,33 @@ export default Ember.Controller.extend({
 
   callStatus: [
     {
-      name: 'Just started',
-      value:1
+      name: 'Just started'
     },
     {
-      name: 'A faw minutes ago',
-      value:2
+      name: 'A faw minutes ago'
     },
     {
-      name: 'Over 10 minutes',
-      value:3
+      name: 'Over 10 minutes'
     },
     {
-      name: 'Over 20 minutes',
-      value:4
+      name: 'Over 20 minutes'
     },
   ],
   showStatusSelect:  Ember.computed('model.channel', function() {
     return (this.get('model.channel') == '1' ||this.get('model.channel') == '4')
+    // body
+  }),
+  cheanelString:  Ember.computed('model.channel', function() {
+   if(this.get('model.channel') == '1'){
+     return 'Chat';
+   }else if(this.get('model.channel') == '2'){
+     return 'Social Network ';
+   }else if (this.get('model.channel') == '3'){
+    return 'Email' ;
+   }else{
+       return 'Phone ' ;
+   }
+    // body
   }),
   actions: {
     logOut(){
@@ -39,41 +48,34 @@ export default Ember.Controller.extend({
       }
 
     },
-    cancelCall(){
-
-    },
-    updateUserDetails() {
+updateUserDetails() {
       this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
         let user =  users.findBy('userName', this.get('userName'));
         user.setProperties( {
-            station: this.get('station'),
-            channel: this.get('channel')
+            station: this.get('model.station'),
+            channel: this.get('model.channel')
           }
         );
         user.save();
        });
       this.send('closePromptDialog');
     },
-    submitRequest: function() {
 
-      var request = this.store.createRecord('request', {
+    submitRequest: function() {
+        console.log('on submit')
+        console.log(this.get('topic'))
+        var request = this.store.createRecord('request', {
         topic: this.get('topic'),
         tier:this.get('tier'),
         description:this.get('desc'),
-        call_status:this.get('callSelectedStatus.value'),
+        status:this.get('callStatus.value'),
         c_id:this.get('Cid'),
-        status:"pending",
         incident:this.get('incident'),
-        start_time: new Date(),
-        user: this.get('model')
+        start_time: new Date().getTime(),
       });
       request.save();
-      this.set('topic', '');
-      this.set('tier', null);
-      this.set('desc', '');
-      this.set('Cid', '');
-      this.set('callSelectedStatus.value', '');
-    },
+    }
+,
     openModal(){
       this.set('modalShown', true)
     },
