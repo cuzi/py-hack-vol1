@@ -1,7 +1,7 @@
 {{#if (eq request.status 'pending')}}
     {{#paper-item class=rowClass}}
 
-        <img src={{if isAdmin "http://www.freeiconspng.com/uploads/warning-icon-png-1.png" request.user.image}}  class="md-avatar">
+        <img src={{if isAdmin request.user.image imageUrl}}  class="md-avatar">
         <div class="md-list-item-text">
             <h3>{{request.topic}}</h3>
             <h4>{{request.description}}</h4>
