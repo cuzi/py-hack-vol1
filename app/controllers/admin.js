@@ -1,5 +1,4 @@
 import Ember from 'ember';
-
 export default Ember.Controller.extend({
   cheanelString:  Ember.computed('model.channel', function() {
    if(this.get('model.channel') == '1'){

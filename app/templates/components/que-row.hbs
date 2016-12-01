@@ -8,7 +8,11 @@
             <p>{{request.req_time}}</p>
         </div>
         {{#paper-button iconButton=true onClick=(action 'deleteRow') class="md-secondary"  }}
+            {{#if isAdmin}}
+            {{paper-icon "check-circle"}}
+            {{else}}
             {{paper-icon "cancel"}}
+            {{/if}}
         {{/paper-button}}
     {{/paper-item}}
 {{/if}}

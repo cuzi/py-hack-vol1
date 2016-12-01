@@ -90,15 +90,15 @@
 
           {{#paper-dialog-actions class="layout-row"}}
             <span class="flex"></span>
-            {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Oops ! {{/paper-button}}
-            {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE!{{/paper-button}}
+            {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Cancel {{/paper-button}}
+            {{#paper-button primary=true onClick=(action "updateUserDetails" "ok")}}DONE{{/paper-button}}
           {{/paper-dialog-actions}}
 
         {{/paper-dialog}}
       {{/if}}
   </div>
   <div class="layout-column flex-xs flex-gt-xs-30">
-      {{que-table requests=model.requests isAdmin=isAdmin}}
+      {{que-table requests=model.requests isAdmin=false}}
     </div>
 
  </div>

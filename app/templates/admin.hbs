@@ -2,6 +2,49 @@
 
 {{outlet}}
 <h3 class="login-title">Admin Place</h3>
-<div class="layout-column flex-xs flex-gt-xs-70">
-    {{que-table requests=model  isAdmin=false}}
+
+<div class="layout layout-sm-row">
+  <div class="layout-column flex-xs flex-gt-xs-70 my">
+      {{que-table requests=model isAdmin=true}}
+  </div>
+  <div class="layout-column flex-xs flex-gt-xs-30">
+        {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+           <p>Number of Request</P>
+             <p>30</p>
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.actions}}
+        {{/card.actions}}
+      {{/paper-card}}
+          {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+           <p>
+              answearing  averege pace
+           </p>
+           <p>
+             3.23243 min
+           </p>
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.actions}}
+        {{/card.actions}}
+      {{/paper-card}}
+          {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+          <p>
+              canceled request :
+           </p>
+           <p>
+             20
+           </p>
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.actions}}
+        {{/card.actions}}
+      {{/paper-card}}
+  </div>
 </div>
