@@ -78,7 +78,7 @@ export default Ember.Controller.extend({
         c_id:this.get('Cid'),
         status:"pending",
         incident:this.get('incident'),
-        start_time: new Date(),
+        req_time: new Date(),
         user: this.get('model')
       });
       request.save();
