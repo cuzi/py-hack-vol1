@@ -24,7 +24,19 @@ export default Ember.Controller.extend({
     return (this.get('model.channel') == '1' ||this.get('model.channel') == '4')
     // body
   }),
-  cheanelString:  Ember.computed('model.channel', function() {
+  requestsChanged:  Ember.observer('model.requests', function() {
+    this.store.query('user', {'userName':  this.get('userName')}).then((users) => {
+        let user =  users.findBy('userName', this.get('userName'));
+        user.setProperties( {
+            station: this.get('model.station'),
+            channel: this.get('model.channel')
+          }
+        );
+        user.save();
+       });
+    // body
+  }),
+  cheanelString: Ember.computed('model.channel', function() {
    if(this.get('model.channel') == '1'){
      return 'Chat';
    }else if(this.get('model.channel') == '2'){

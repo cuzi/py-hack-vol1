@@ -8,6 +8,8 @@ export default Ember.Component.extend({
     actions: {
         deleteRow() {
             this.set('request.status', 'canceled');
+
+            this.get('request').save();
         }
     }
 });
